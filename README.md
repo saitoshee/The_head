@@ -1,4 +1,4 @@
-<p>The_head<\p>
+<p>The_head</p>
 /*
   Programming for pleasure
 */
