@@ -1,6 +1,8 @@
 // Массивы и строки SOS
+
 const int ledPin = 13;
-const int dotDelay = 200;
+const int dotDelay = 1000;
+
 char *letters[] = {
       ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", // A-G
       "--.-", "....", "..", ".---", "-.-", ".-..", "--", // Q-M
@@ -19,10 +21,10 @@ void flashSeq(char* seq)
       flashDotOrDash(seq[i]);
       i++;
     }
-    delay(dotDelay * 3);
+    delay(dotDelay);
 }
 
-void flashDotOrDash(char dORd)
+void flashDotOrDash(char dORd) // между . задержка меньше чем между -
 {
   digitalWrite(ledPin,HIGH);
   if (dORd == ".")
@@ -43,11 +45,8 @@ Serial.begin(9600);
 }
 
 void loop() 
-{
-  char ch;
-  if (Serial.available() > 0)
-  {
-    ch = Serial.read();
+{ 
+    char ch = "FU0";  
     if (ch >= 'a' && ch <= 'z')
     {
       flashSeq(letters[ch - 'a']);  
@@ -62,14 +61,8 @@ void loop()
     }
     else if(ch == ' ')
     {
-        delay(dotDelay * 4);
+        delay(dotDelay * 3);
     }
    
-  }
 }
 
-void flash(int delayTime)
-{
-
-
-}
