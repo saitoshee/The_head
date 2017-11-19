@@ -1,4 +1,4 @@
-/*
+/*https://www.arduino.cc/reference/en/
  *                            AVR                   ESP
  *      
  * short int            -32768..32767            -32768..32767
@@ -20,7 +20,7 @@
  * constants:
  * #define NAME  1
  * const int8_t ledPin = 13;
- * 
+ * static
  * functions:
  * 
  * int sqr(int a)

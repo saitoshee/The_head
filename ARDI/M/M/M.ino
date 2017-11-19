@@ -1,5 +1,5 @@
 const int16_t ledPin = 13;
-const int16_t dotDelay = 100;
+const int16_t dotDelay = 25;
 
 
 int8_t *letters[] = {
@@ -26,12 +26,12 @@ void flashDotOrDash(int8_t dORd)
 {
   digitalWrite(ledPin,HIGH);
   if (dORd == ".")
-  {                       // если . задерживается вкл 100мс
+  {                       // если . задерживается вкл 100мс  
     delay(dotDelay);  
   }
   else
-  {                     // если - задержка 500мс 
-    delay(dotDelay * 5);  
+  {                     // если - задержка 500мс  
+    delay(dotDelay * 10);  
   }
   digitalWrite(ledPin,LOW);
   delay(dotDelay); // звдержка в выкл состоянии 100мс
@@ -43,7 +43,7 @@ pinMode(ledPin,OUTPUT);
 
 void loop() 
 { 
-    int8_t ch = "F";  
+    int8_t ch = "SLEEP";  
     if (ch >= 'a' && ch <= 'z')
     {
       flashSeq(letters[ch - 'a']);  
