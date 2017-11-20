@@ -1,0 +1,7 @@
+D:\SHARP\Consol1\Consol1\bin\Debug\Consol1.exe.config
+D:\SHARP\Consol1\Consol1\bin\Debug\Consol1.exe
+D:\SHARP\Consol1\Consol1\bin\Debug\Consol1.pdb
+D:\SHARP\Consol1\Consol1\obj\Debug\Consol1.csprojResolveAssemblyReference.cache
+D:\SHARP\Consol1\Consol1\obj\Debug\Consol1.csproj.CoreCompileInputs.cache
+D:\SHARP\Consol1\Consol1\obj\Debug\Consol1.exe
+D:\SHARP\Consol1\Consol1\obj\Debug\Consol1.pdb
