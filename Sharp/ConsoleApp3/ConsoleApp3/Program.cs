@@ -1,24 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// GlobalLocal
+using System;
 
 namespace ConsoleApp3
 {
     class Program
     {
-        private static string PrintGreeting(string name, double salary)
+        //static int V; better use method
+        static int DoWork()
         {
-            string a = Console.Write(" ");
-
-
-
-            // возвращает "Hello, <name>, your salary is <salary>"
-            return a; 
+            return 10;
         }
         static void Main(string[] args)
         {
+            var local = 0;
+            Console.WriteLine(local);
+            local = DoWork();
+            Console.WriteLine(local);
+            Console.ReadKey();
         }
     }
 }
