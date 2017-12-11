@@ -52,7 +52,7 @@ unsigned int freqscaled;
 
 byte wave;
 long t;
-long samplerate;
+const long samplerate = 100000; // частота дискритизации
 long period;
 
 //storage variables- I used these to cut down on the math being performed during the interrupt
@@ -73,18 +73,16 @@ void setup() {
   
   cli(); //disable interrupts запрет прерывания
   //timer 1:
-  TCCR1A = 0; // set entire TCCR1A register to 0
+  TCCR1A = 0; // set entire TCCR1A register to 0 регулирование управления
   TCCR1B = 0; // same for TCCR1B
   //set compare match register- 100khz to start
-  OCR1A = 159; // = (16 000 000 / 100 000) - 1 = 159
+  OCR1A = 159; // = (16 000 000 / 100 000) - 1 = 159 сравнение
   //turn on CTC mode
-  TCCR1B |= (1 << WGM12);
+  TCCR1B |= (1 << WGM12); 
   // Set CS10 bit for 0 prescaler
   TCCR1B |= (1 << CS10);
-  // enable timer compare interrupt
+  // enable timer compare interrupt регистры прерывания. биты в нем локально разрешают прерывания
   TIMSK1 |= (1 << OCIE1A); 
-  
-  samplerate = 100000;
   
   PORTB = 0;
   PORTB = 1 << type;
