@@ -9,6 +9,9 @@ public class Bullet : MonoBehaviour {
 
     private SpriteRenderer sprite;
 
+    private GameObject parent;
+    public GameObject Parent { set { parent = value;  } }
+
     private void Awake()
     {
         sprite = GetComponentInChildren<SpriteRenderer>();
@@ -24,4 +27,13 @@ public class Bullet : MonoBehaviour {
         Destroy(gameObject, 1.4F);
     }
 
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        Unit unit = collider.GetComponent<Unit>();
+
+        if (unit && unit.gameObject != parent)
+        {
+            Destroy(gameObject);
+        }
+    }
 }

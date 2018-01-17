@@ -1,15 +1,18 @@
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 LiquidCrystal_I2C lcd(0x27,16,2);  // Устанавливаем дисплей
-
+//31,17,17,17,17,17,17
+byte symbol[8] = {B11111,B10001,B10001,B10001,B10001,B10001,B10001,B10001}; // буква П
+#define STRING1 STRING2 STRING3
 void setup() {
   Serial.begin(9600); // инициируем СОМ порт
   lcd.init();                     
   lcd.backlight();// Включаем подсветку дисплея
-  lcd.print(" KSV SWR METER");
-  lcd.setCursor(6, 1);
-  lcd.print("1.0");
-  delay(3000); // задержка 1000 мс
+  lcd.setCursor(6,1);
+  lcd.print(" KCB METP ");
+  lcd.createChar(0,symbol);
+  delay(3000); // задержка 3с
+  
  
 
 }
@@ -36,15 +39,16 @@ void loop() {
   KSV=U12/U21;// вычисляем отношение
 lcd.setCursor(0, 0);
   // Устанавливаем курсор на первую строку и нулевой символ.
-  lcd.print("PRA ");
+  lcd.write(byte(0));
+  lcd.print(": ");
   lcd.print(U1); // U прямое
-  lcd.print(" OBR ");
+  lcd.println(" O: ");
   lcd.print(U2);// U обратное
   lcd.print("   ");
   lcd.setCursor(0, 1);
-  lcd.print("KSV ");
+  lcd.print("KCB: ");
   lcd.print(KSV);// Значение отношения (КСВ)
-  lcd.print("       ");
+  lcd.print(" ");
  delay(500); // задержка 500 мс
 }
 

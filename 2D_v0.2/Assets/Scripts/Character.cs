@@ -58,7 +58,7 @@ public class Character : Unit {
     {
         rigidbody.AddForce(transform.up * jumpFroce, ForceMode2D.Impulse);
     }
-     
+
     private void CheckGround()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.2F);
@@ -72,6 +72,7 @@ public class Character : Unit {
         position.y += 0.44F;
 
         Bullet newBullet = Instantiate(bullet, position, bullet.transform.rotation) as Bullet;
+        newBullet.Parent = gameObject;
         newBullet.Direction = newBullet.transform.right * (sprite.flipX ? -1.0F : 1.0F);
 
     }
@@ -79,10 +80,23 @@ public class Character : Unit {
     public override void ReceiveDamage()
     {
         lives--;
+        rigidbody.velocity = Vector3.zero;
 
+        rigidbody.AddForce(transform.up * 7.0F, ForceMode2D.Impulse);
         Debug.Log(lives);
     }
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        Unit unit = collider.gameObject.GetComponent<Unit>();
+        if (unit)
+        {
+            Debug.Log(unit);
+            ReceiveDamage();
+        }
 
+       
+
+    }
 }
 
 public enum CharState
