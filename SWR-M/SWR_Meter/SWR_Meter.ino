@@ -34,13 +34,13 @@ void loop() {
   SWR = U12 / U21; // вычисляем отношение
   lcd.setCursor(0, 0);
   // Устанавливаем курсор на первую строку и нулевой символ.
-  lcd.print("P ");
-  lcd.print(U1); // U прямое
-  lcd.print("   ");
-  lcd.print("O ");
-  lcd.print(U2);// U обратное
-  lcd.setCursor(1, 0);
-  lcd.print("KCB ");
+  lcd.print("P:");
+  lcd.print(U1/1000); // U прямое
+  //lcd.print("   ");
+  lcd.print("O:");
+  lcd.print(U2/1000);// U обратное
+  lcd.setCursor(0, 1);
+  lcd.print("KCB:");
   lcd.print(SWR);// Значение отношения (КСВ)
   delay(500); // задержка 500 мс
 }
